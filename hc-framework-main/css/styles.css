@@ -31,8 +31,8 @@
     /* VARIABLES */
 
     /* Typography */
-  --headingFont: 'Dokdo', sans-serif;
-  --bodyFont: 'East Sea Dokdo', sans-serif;
+  --headingFont: 'Dokdo', "sans-serif";
+  --bodyFont: 'East Sea Dokdo', "sans-serif";
   
 
   --baseFontSize: clamp(0.875rem, 0.7885rem + 0.3846vw, 1.25rem);
