@@ -5,7 +5,7 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>什么啊这是</title>
+  <title>dogandcat</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -29,6 +29,33 @@
       <a href="">即将上映</a>
       <a href="">经典影片</a>
   </nav>
+  <div class="banner">
+    <div style="text-align: center; padding: 20px; background-color: #3FC1B9; color: white; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+        <h2>Good News!</h2>
+        <p>You are in danger</p>
+    </div>
+    <div class="scrolling-text show">Don't Touch this Button! I will be mad!</div>
+</div>
+<script>
+  // Assuming you have a function that closes the modal
+function closeModal() {
+    const modal = document.querySelector('.modal'); // Adjust the selector as needed
+    modal.style.display = 'none'; // Hide the modal
+    document.querySelector('.scrolling-text').classList.add('show'); // Show the scrolling text
+}
+
+// Example function to show modal (you might already have this)
+function openModal() {
+    const modal = document.querySelector('.modal'); // Adjust the selector as needed
+    modal.style.display = 'block'; // Show the modal
+    document.querySelector('.scrolling-text').classList.remove('show'); // Hide the scrolling text when modal is open
+}
+
+// You may need to adjust how the closeModal function is called, 
+// for example by adding it to your close button's event listener.
+document.querySelector('.modal .close').addEventListener('click', closeModal);
+
+</script>
 <div class="containerOmO"> 
 <div class="choose-area">
   <div class="choose-item clearfix">
@@ -117,7 +144,7 @@
       <div class="wflbb-item">
         <div class="poster">
           <a href="">
-            <img src="../images/tempoaaa.png" alt="">
+            <img src="../images/oc/great.png" alt="">
           </a>
         </div>
         <div class="name a">Opossum</div>
@@ -126,7 +153,7 @@
       <div class="wflbb-item">
         <div class="poster">
           <a href="">
-            <img src="../images/tempobbb.png" alt="">
+            <img src="../images/oc/bye.png" alt="">
           </a>
         </div>
         <div class="name a">Opossum</div>
@@ -135,7 +162,7 @@
       <div class="wflbb-item">
         <div class="poster">
           <a href="">
-            <img src="../images/tempoccc.png" alt="">
+            <img src="../images/oc/cry.png" alt="">
           </a>
         </div>
         <div class="name a">Opossum</div>
@@ -144,7 +171,7 @@
       <div class="wflbb-item">
         <div class="poster">
           <a href="">
-            <img src="../images/Home.png" alt="">
+            <img src="../images/oc/lessionme.png" alt="">
           </a>
         </div>
         <div class="name a">Opossum</div>
@@ -153,7 +180,7 @@
       <div class="wflbb-item">
         <div class="poster">
           <a href="">
-            <img src="../images/Home.png" alt="">
+            <img src="../images/oc/dontgo.png" alt="">
           </a>
         </div>
         <div class="name a">Opossum</div>
@@ -162,7 +189,7 @@
       <div class="wflbb-item">
         <div class="poster">
           <a href="">
-            <img src="../images/Home.png" alt="">
+            <img src="../images/oc/hiii.png" alt="">
           </a>
         </div>
         <div class="name a">Opossum</div>
@@ -171,7 +198,7 @@
       <div class="wflbb-item">
         <div class="poster">
           <a href="">
-            <img src="../images/Home.png" alt="">
+            <img src="../images/oc/shock.png" alt="">
           </a>
         </div>
         <div class="name a">Opossum</div>
@@ -383,5 +410,55 @@
     </div>
   </div>
 </div>
+<script>
+  // 选择 Modal 和关闭按钮
+  const modal = document.querySelector('.modal');
+  const closeBtn = document.querySelector('.modal .close');
+
+  // 监听关闭按钮的点击事件
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none'; // 隐藏 Modal
+  });
+
+  // 如果想要点击某个poster打开modal，可以在此添加监听器
+  const posters = document.querySelectorAll('.wflbb-item .poster');
+  posters.forEach(poster => {
+    poster.addEventListener('click', () => {
+      modal.style.display = 'flex'; // 显示 Modal
+    });
+  });
+</script>
+
+<script>
+  const modalContainer = document.querySelector('.modal .container2333');
+
+  window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const maxScroll = document.body.scrollHeight - window.innerHeight; // 最大滚动高度
+
+      // 计算比例
+      const scrollFraction = Math.min(scrollTop / maxScroll, 1); // 限制在 0 到 1 之间
+
+      // 根据比例设置颜色，示例使用从蓝色到红色的渐变
+      const red = Math.floor(255 * scrollFraction);
+      const green = Math.floor(111 - (111 * scrollFraction)); // 绿色递减
+      const blue = 255;
+
+      // 设置新的背景颜色
+      modalContainer.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+  });
+</script>
+<script>
+  document.querySelector('.close').addEventListener('click', function() {
+    document.querySelector('.modal').style.display = 'none'; // 隐藏 modal
+    const banner = document.getElementById('banner');
+    banner.style.display = 'block'; // 显示 banner
+    setTimeout(() => banner.classList.add('show'), 10); // 添加过渡类
+});
+
+</script>
+
+
+
 </body>
 </html>
