@@ -1,0 +1,150 @@
+/* Resetting some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f7f2;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f9f7f2;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo-symbols {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.logo-text p {
+    font-size: 14px;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+.right-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.language-search {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.language-search a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+.search-icon {
+    font-size: 16px;
+    color: #333;
+}
+
+.program-button {
+    font-size: 14px;
+    padding: 8px 12px;
+    background-color: #fff;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Grid layout for main content */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    padding: 20px;
+}
+
+.grid-item {
+    background-color: #f5f5f5;
+    border: 2px solid #ddd;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.grid-item h3 {
+    margin: 10px 0;
+}
+
+.grid-item p {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Color scheme for each section */
+.market {
+    background-color: #ffeb3b;
+    border: 2px solid #e65100;
+}
+
+.practice {
+    background-color: #c8e6c9;
+    border: 2px solid #388e3c;
+}
+
+.cabane {
+    background-color: #ffcc80;
+    border: 2px solid #e64a19;
+}
+
+.bureau {
+    background-color: #bbdefb;
+    border: 2px solid #1976d2;
+}
+
+.services {
+    background-color: #e1bee7;
+    border: 2px solid #8e24aa;
+}
+
+/* Placeholder for icons (for demonstration, these would be replaced by actual images or SVGs) */
+.icon {
+    width: 50px;
+    height: 50px;
+    margin: 10px auto;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+.market-icon { background-color: #ff8f00; }
+.practice-icon { background-color: #43a047; }
+.cabane-icon { background-color: #f4511e; }
+.bureau-icon { background-color: #1e88e5; }
+.services-icon { background-color: #8e24aa; }
