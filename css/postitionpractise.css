@@ -1,3 +1,15 @@
+.xianzheyang{
+    cursor: url("imgs/target.ico"),auto;
+    display:none;
+    visibility:hidden;
+    background-image:url("../imgs/target.jpg");  
+    background-repeat:no-repeat;
+    background-position:-36px -38px;
+    width:54px;
+    height:54px;
+    background-attachment: fixed;
+    background-color:antiquewhite;
+}
 .clear-fix:after{
     content:"";
     display:block;

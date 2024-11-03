@@ -15,6 +15,11 @@ body {
     font-family: 'Dokdo', "sans-serif"; 
     --headingFont: 'Dokdo', "sans-serif";
     font-size:xx-large;
+    background-image:url("../images/oc/abababa.png");  
+    background-repeat:repeat-x;
+    background-size:auto;
+    background-attachment: fixed;
+
 
 }
 
@@ -248,8 +253,10 @@ body {
     display: inline-block; /* Show the text when the class is added */
 }
   .choose-area {
-    background-image: url('../images/oc/abababa.png'); /* 替换为你的背景图片路径 */
-    background-size:auto; /* 使背景图覆盖整个容器 */
+    background-image: url('../images/oc/callme.jpg') ; /* 替换为你的背景图片路径 */
+    background-repeat: no-repeat;
+    background-size:contain; /* 使背景图覆盖整个容器 */
+    background-color:#47464a;
     background-position: center; /* 背景图居中 */
     border-radius: 10px; /* 圆角边框 */
     padding: 20px; /* 内边距 */
