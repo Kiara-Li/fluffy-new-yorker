@@ -66,3 +66,11 @@ bottom: 0;
 left:0;
 background-color:white;
 }
+.shell{
+    postion:relative;
+    min-width: 1000px;
+    display: flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    transform-style:;
+}

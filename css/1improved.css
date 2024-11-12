@@ -1,0 +1,121 @@
+body{
+    margin: 0;
+}
+.container{
+    width: 900px;
+    margin:auto;
+    max-width:90vW;
+    text-align:center;
+    padding-top:10px;
+    transition:transform .5s;
+}
+svg{
+    width:30px;
+}
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 0;
+}
+@media only screen and (max-width:992px){
+    .listProduct{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media only screen and (max-width:768px){
+    .listProduct{
+        grid-template-columns: repeat (2,1fr);
+    }
+}
+body {
+    width: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #7C6F4F;
+    color: white;
+}
+
+header {
+    padding: 1rem;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+main {
+    padding: 2rem;
+}
+
+.logo-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-block {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.tertiary-block {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.button-set {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.custom-button {
+    background-color: #4B3D29;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.card {
+    background-color: #4B3D29;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 8px;
+}
+
+img {
+    max-width: 100%; /* Ensure the image fits within its container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    color: white;
+    margin-top: 2rem;
+}
+/* 购物车图标样式 */
+#cartIcon {
+font-size: 24px;
+background-color: #7C6F4F;
+color: white;
+padding: 10px;
+border-radius: 50%;
+text-align: center;
+}
+
+/* 购物车侧边栏打开时的样式 */
+#cartSidebar.show {
+display: flex;
+}
