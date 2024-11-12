@@ -67,10 +67,66 @@ left:0;
 background-color:white;
 }
 .shell{
-    postion:relative;
+    position:relative;
     min-width: 1000px;
     display: flex;
     justify-content:center;
     flex-wrap:wrap;
-    transform-style:;
+    transform-style:preserve-3d;
+    perspective:900px;
 }
+.shell .box{
+    position:relative;
+    width: 250px;
+    height: 350px;
+    transition:.3s;
+    overflow:hidden;
+    margin:30px;
+    transform: rotateY(0);
+    transition-delay: 0.1;
+    border-radius: 5px;
+    border:#fff 5px solid;
+}
+.shell .box .images img{
+    width:100%
+}
+.shell:hover.box{
+    transform:rotateY(20deg);
+}
+.shell .box:hover{
+    transform: rotateY(0 deg) scale(1.25);
+    box-shadow: 0 25px 40px rgba(0,0,0,0.7);
+    z-index:1;
+}
+
+.shell .box:hover~.box{
+    transform:rotateY(-20deg);
+}
+.shell .box .content{
+    position:absolute;
+    top:0;
+    width:90%;
+    height:100%;
+    z-index:999;
+    padding:15px;
+}
+.shell .box .content h2{
+    color:rgb(210,140,140);
+    transition: .3s;
+    font-size: 20px;
+    transition: translateY(-100px);
+}
+.shell .box:hover .content h2{
+    transform: translateY(-15px);
+}
+.shell .box .content p{
+    color:#000;
+    transition: .3s;    
+    font-size:14px;
+    transform:translateY(600px);
+    background-color: rgba(225,225,225,.7);
+}
+.shell .box:hover .content p{
+    transform:translateY(220px);
+}
+
