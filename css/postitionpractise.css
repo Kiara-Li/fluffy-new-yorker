@@ -10,61 +10,79 @@
     background-attachment: fixed;
     background-color:antiquewhite;
 }
-.clear-fix:after{
-    content:"";
-    display:block;
-    clear:both;
+.clear-fix:after {
+    content: "";
+    display: block;
+    clear: both;
 }
-header{
-    background:whitesmoke;
-    color:#999;
-    height:40px;
-    line-height:40px;
+
+header {
+    background-color: #f7a846; /* 设置橙色背景 */
+    color: #333;
+    height: 70px; /* 根据需要调整高度 */
+    line-height: 70px; /* 确保内容垂直居中 */
     position: fixed;
-    width:100%;
-    left:0 ;
+    width: 100%;
+    left: 0;
     top: 0;
+    border-bottom-left-radius: 30px; /* 左侧圆角 */
+    border-bottom-right-radius: 30px; /* 右侧圆角 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px; /* 增加左右内边距 */
 }
-.header .topnav>li {
-    float:left;
-    margin:0 20px;
-   width: 150px;
-   text-align: center;
-   background: lightblue;
-   height: 40px;
-   box-sizing:border-box;
-   position: relative;
+
+.header .topnav > li {
+    float: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* 图标和文字之间的间距 */
+    margin: 0 15px; /* 每个菜单项之间的间距 */
+    padding: 0 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fffcfc;
+    transition: color 0.3s, background-color 0.3s; /* 添加过渡效果 */
 }
-.header .topnav>li:hover{
-    background-color:white;
-    border: 2px solid #ccc;
-    border-bottom: none;
-    line-height: 36px;
+
+.header .topnav > li:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* 半透明悬停效果 */
+    color: #0056b3;
+    border-radius: 10px; /* 圆角 */
 }
-.header .topnav>li .submenu{
-    text-align:left;
-    line-height:1.5;
-    width: 300px;
-    /*no box is created*/
-    display:none;
-    border: 2px solid #ccc;
-    box-sizing:border-box;
-    position: absolute; 
-    right: -2px;
-    background: lightblue;
+
+.header .topnav > li .submenu {
+    text-align: left;
+    line-height: 1.5;
+    width: 200px;
+    display: none;
+    border-radius: 5px; /* 子菜单圆角 */
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+    padding: 10px;
 }
-.header .topnav>li:hover .submenu{
-    display:block;
+
+.header .topnav > li:hover .submenu {
+    display: block;
 }
-.header .topnav>li:hover:after{
-  content:"" ; 
-  position: absolute;
-width:100%;
-height: 5px;
-background: red;
-bottom: 0;
-left:0;
-background-color:white;
+
+.header .topnav > li:hover:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #f7a846; /* 下划线的颜色与背景色一致 */
+    bottom: 0;
+    left: 0;
+    border-radius: 2px; /* 下划线圆角 */
 }
 .shell{
     position:relative;
@@ -74,6 +92,7 @@ background-color:white;
     flex-wrap:wrap;
     transform-style:preserve-3d;
     perspective:900px;
+    margin-top: 160px;
 }
 .shell .box{
     position:relative;

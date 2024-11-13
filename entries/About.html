@@ -15,18 +15,185 @@
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="../css/normalize.css">
-  <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/About.css">
+  
   
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="../images/favicon.ico">
 </head>
-
 <body>
 
+  <div id="main">
+    <div id="click-section">
+      <div id="drawerboxes">
+        <div class="drawerbox active">
+          <button class="drawer-btn active" onclick="slideTo(1)">
+            The wind Rises
+            <span class="drawer-head">1</span>
+          </button>
+        </div>
 
+        <div class="drawerbox">
+          <button class="drawer-btn active" onclick="slideTo(1)">
+            The wind Rises
+            <span class="drawer-head">2</span>
+          </button>
+        </div>
+
+        <div class="drawerbox">
+          <button class="drawer-btn active" onclick="slideTo(1)">
+            The wind Rises
+            <span class="drawer-head">3</span>
+          </button>
+        </div>
+
+        <div class="drawerbox">
+          <button class="drawer-btn active" onclick="slideTo(1)">
+            The wind Rises
+            <span class="drawer-head">4</span>
+          </button>
+        </div>
+        
+
+      </div>
+    </div>
+
+    <div id="slide-section">
+      <div id="slide-bar">
+        <div id="bar"></div>
+      </div>
+      <div id="card-section">
+        <div id="card1" class="card">
+          <div class="card-small-title">Miyazaki Hayao</div>
+          <div class="card-title">The Wind Rises</div>
+          <div class="card-content">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat a harum quos, labore dolores mollitia unde suscipit delectus autem deserunt?
+          </div>
+          <div class="card-img">
+            <img src="../images/oc/tnaks.jpg" alt="">
+          </div>
+        </div>
+
+        <div id="card2" class="card">
+          <div class="card-small-title">Miyazaki Hayao</div>
+          <div class="card-title">The Wind Rises</div>
+          <div class="card-content">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat a harum quos, labore dolores mollitia unde suscipit delectus autem deserunt?
+          </div>
+          <div class="card-img">
+            <img src="../images/lingshi/duckgo.jpg" alt="">
+          </div>
+        </div>
+
+        <div id="card3" class="card">
+          <div class="card-small-title">Miyazaki Hayao</div>
+          <div class="card-title">The Wind Rises</div>
+          <div class="card-content">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat a harum quos, labore dolores mollitia unde suscipit delectus autem deserunt?
+          </div>
+          <div class="card-img">
+            <img src="../images/lingshi/duckgo.jpg" alt="">
+          </div>
+        </div>
+
+        <div id="card4" class="card">
+          <div class="card-small-title">Miyazaki Hayao</div>
+          <div class="card-title">The Wind Rises</div>
+          <div class="card-content">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat a harum quos, labore dolores mollitia unde suscipit delectus autem deserunt?
+          </div>
+          <div class="card-img">
+            <img src="../images/lingshi/duckgo.jpg" alt="">
+          </div>
+        </div>
+
+
+      </div>
+    </div> 
+  </div>
+<script>
+  let chosenSlideNumber = 1;
+  let offset = 0;
+  let barOffset = 0;
+  let intervalID;
+
+  startSlide();
+
+  // 获取所有的 drawer 按钮并添加点击事件
+  const drawerBtns = Array.from(document.querySelectorAll(".drawer-btn"));
+  drawerBtns.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      clearInterval(intervalID);
+      slideTo(index + 1); // 根据按钮的索引直接跳到相应幻灯片
+      startSlide();
+    });
+  });
+
+  const slideSection = document.querySelector("#slide-section");
+  
+  // 停止自动滑动并允许鼠标滚动切换
+  slideSection.addEventListener("mouseenter", () => {
+    clearInterval(intervalID);
+  });
+  
+  // 重新启动自动滑动
+  slideSection.addEventListener("mouseleave", () => {
+    startSlide();
+  });
+
+  // 鼠标滚动事件监听器，滚动时切换幻灯片
+  slideSection.addEventListener("wheel", (event) => {
+    clearInterval(intervalID);
+    if (event.deltaY > 0) {
+      slideTo((chosenSlideNumber % 4) + 1); // 下一张幻灯片
+    } else {
+      slideTo((chosenSlideNumber - 2 + 4) % 4 + 1); // 上一张幻灯片
+    }
+    startSlide();
+  });
+
+  function slideTo(slideNumber) {
+    drawerboxToggle(slideNumber);
+    drawerbtnToggle(slideNumber);
+
+    let previousSlideNumber = chosenSlideNumber;
+    chosenSlideNumber = slideNumber;
+    offset += (chosenSlideNumber - previousSlideNumber) * (-100);
+    barOffset += (chosenSlideNumber - previousSlideNumber) * (-100);
+    barSlide(barOffset);
+
+    const slides = document.querySelectorAll(".card");
+    Array.from(slides).forEach(slide => {
+      slide.style.transform = `translateY(${offset}%)`;
+    });
+  }
+
+  function drawerboxToggle(drawerboxNumber) {
+    let prevDrawerboxNumber = chosenSlideNumber;
+    const drawerboxes = document.querySelectorAll(".drawerbox");
+    drawerboxes[prevDrawerboxNumber - 1].classList.toggle("active");
+    drawerboxes[drawerboxNumber - 1].classList.toggle("active");
+  }
+
+  function drawerbtnToggle(drawerBtnNumber) {
+    let prevDrawerBtnNumber = chosenSlideNumber;
+    const drawerBtns = document.querySelectorAll(".drawer-btn");
+    drawerBtns[prevDrawerBtnNumber - 1].classList.toggle("active");
+    drawerBtns[drawerBtnNumber - 1].classList.toggle("active");
+  }
+
+  function barSlide(barOffset) {
+    const bar = document.querySelector('#bar');
+    bar.style.transform = `translateY(${barOffset}%)`;
+  }
+
+  function startSlide() {
+    intervalID = setInterval(() => {
+      slideTo((chosenSlideNumber % 4) + 1);
+    }, 3000);
+  }
+</script>
 </body>
 </html>
