@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Enter if you dare</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/seeya.css">
+ 
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="../images/favicon.ico">
+</head>
+
+<body>
+<div class="shell">
+  <form>
+    <h2>LOGIN</h2>
+    <div class="form-item">
+      <label for="username">username</label>
+      <div class="input-wrapper">
+        <input type="text" id="username">
+      </div>
+    </div>
+    <div class="form-item">
+      <label for="password">Password</label>
+      <div class="input-wrapper">
+        <input type="password" id="password">
+        <button type="button" id="eyeball">
+          <div class="eye"></div>
+        </button>
+        <div id="beam"></div>
+      </div>
+    </div>
+    <button id="submit">Sign in</button>
+  </form>
+</div>
+
+</body>
+<script>
+ const root = document.documentElement;
+const eye = document.querySelector('#eyeball');
+const beam = document.querySelector('#beam');
+const passwordInput = document.querySelector('#password');
+
+root.addEventListener('mousemove', (e) => {
+  let rect = beam.getBoundingClientRect();
+  let centerX = rect.left + rect.width / 2;
+  let centerY = rect.top + rect.height / 2;
+  let deltaX = e.pageX - centerX;
+  let deltaY = e.pageY - centerY;
+  let rad = Math.atan2(deltaY, deltaX);
+  let degrees = (rad * (180 / Math.PI)) * -1 + 90;
+  root.style.setProperty('--beamDegrees', `${degrees}deg`);
+});
+
+eye.addEventListener('click', (e) => {
+  e.preventDefault();
+  document.body.classList.toggle('show-password');
+  passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+  setTimeout(() => passwordInput.focus(), 0);
+  document.body.classList.toggle('background-changed');
+  setTimeout(() => passwordInput.focus(), 0);
+});
+
+</script>
+</html>

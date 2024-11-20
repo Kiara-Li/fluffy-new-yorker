@@ -1,0 +1,43 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    background-color: rgb(235,151,151);
+}
+.shell{
+    display:grid;
+    padding:20px;
+    grid-gap:20px;
+    /*这个属性规定的网格布局里的列数和宽度*/
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    grid-auto-rows: 270px;
+    grid-auto-flow: dense;
+}
+.shell>div{
+    background-color:rgb(51,51,51);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:5px;
+    position:relative;
+}
+.shell span{
+    color:#fff;
+    font:100 100px 'kristen ITC';
+    position:absolute;
+    top:-10px;
+    left:20px;
+    text-shadow: -5px 0 rgb(0, 0, 0),0 -5px rgb(0, 0, 0), 0 5px 0 rgb(0, 0, 0),0 5px rgb(0, 0, 0);
+}
+.shell .wide{
+    grid-column:span 2;
+}
+.shell .tall{
+    grid-row: span 2;
+}
+.shell .big{
+    grid-column:span 2;
+    grid-row: span 2;
+}
+
