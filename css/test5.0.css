@@ -1,150 +1,143 @@
-/* Resetting some default styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f7f2;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
+    background-color: rgb(23, 23, 100);
+    display: flex; /* 修正拼写错误 */
+    justify-content: center;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #f9f7f2;
-    border-bottom: 1px solid #ddd;
-}
-
-.logo-section {
-    display: flex;
-    align-items: center;
-}
-
-.logo-symbols {
-    font-size: 24px;
-    margin-right: 10px;
-}
-
-.logo-text p {
-    font-size: 14px;
-    line-height: 1.2;
+    height: 100vh; /* 确保内容居中显示 */
     margin: 0;
 }
 
-.nav-links {
-    display: flex;
-    gap: 20px;
+.a {
+    width: 420px;
+    height: 420px;
+    position: relative; /* 改为相对定位以确保子元素正确定位 */
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform 0.8s ease; /* 平滑过渡 */
 }
 
-.nav-links a {
-    text-decoration: none;
+.b, .c, .e, .f { /* 分开写以保证选择器正确 */
+    width: 420px;
+    height: 420px;
+    position: absolute;
+    transform-origin: left; /* 保留左侧翻转效果 */
+    background-size: cover;
+    transition: calc(var(--i) * 0.3s); /* 动画延迟 */
+    z-index: calc(var(--i) * 99); /* 层级控制 */
+}
+
+.b, .c { /* 只对 .b 和 .c 设置边框样式 */
+    border: solid 20px #576574;
+    border-left: none;
+    top: -20px;
+    border-radius: 0 40px 40px 0;
+}
+
+/* hover 效果 */
+.a:hover .b {
+    border-left: #576574 20px solid;
+}
+
+.a:hover .c, .a:hover .d, .a:hover .e, .a:hover .f { /* 修正选择器 */
+    transform: rotateY(-180deg); /* 翻页动画 */
+    transition: calc(var(--s) * 2s); /* 动画延迟 */
+    z-index: calc(var(--s) * -99); /* 层级翻转 */
+}
+
+.a:hover {
+    transform: translateX(100px); /* 容器整体移动 */
+}
+/* 页面翻转效果 */
+.a.flipped .page {
+    transform: rotateY(-180deg); /* 翻转页面 */
+}
+
+/* 每个页面的翻转 */
+.page:nth-child(1) { z-index: 5; }
+.page:nth-child(2) { z-index: 4; }
+.page:nth-child(3) { z-index: 3; }
+.page:nth-child(4) { z-index: 2; }
+.page:nth-child(5) { z-index: 1; }
+
+.text-box {
+    position: absolute;
+    width: 600px; /* 宽度调整为更大，可以容纳更多单词 */
+    height: auto; /* 高度自动适应内容 */
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    text-align: left; /* 左对齐，以便更适合多个单词 */
+    line-height: 1.6; /* 调整行高使其更适合显示多个单词 */
     font-size: 14px;
-    color: #333;
-    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    top: 40px; /* 距离书籍容器顶部 40px */
+    left: 50%; /* 水平居中 */
+    transform: translateX(-50%); /* 实现精确的居中 */
+    padding: 10px; /* 添加内边距，使文本不贴边 */
+    max-height: 200px; /* 限制最大高度，避免文本框过高 */
+    overflow-y: auto; /* 超过最大高度时，显示滚动条 */
 }
-
-.right-menu {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.language-search {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.language-search a {
-    text-decoration: none;
+.text-box2 {
+    position: absolute;
+    width: 600px; /* 宽度调整为更大，可以容纳更多单词 */
+    height: auto; /* 高度自动适应内容 */
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    text-align: left; /* 左对齐，以便更适合多个单词 */
+    line-height: 1.6; /* 调整行高使其更适合显示多个单词 */
     font-size: 14px;
-    color: #333;
-    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    bottom: 60px; /* 距离书籍容器顶部 40px */
+    left: 50%; /* 水平居中 */
+    transform: translateX(-50%); /* 实现精确的居中 */
+    padding: 10px; /* 添加内边距，使文本不贴边 */
+    max-height: 200px; /* 限制最大高度，避免文本框过高 */
+    overflow-y: auto; /* 超过最大高度时，显示滚动条 */
 }
-
-.search-icon {
-    font-size: 16px;
-    color: #333;
-}
-
-.program-button {
-    font-size: 14px;
-    padding: 8px 12px;
-    background-color: #fff;
-    border: 1px solid #333;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* Grid layout for main content */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
-    padding: 20px;
-}
-
-.grid-item {
-    background-color: #f5f5f5;
-    border: 2px solid #ddd;
+/* 通用按钮样式 */
+.last-page {
+    position: absolute;
+    width: 150px; /* 定义宽度以避免自动宽度过小 */
+    height: 50px; /* 固定高度，保证按钮大小统一 */
+    background: linear-gradient(135deg, #6e7f9d, #4e5d6b); /* 渐变背景 */
+    color: white;
+    font-size: 18px;
     text-align: center;
-    padding: 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 14px;
+    line-height: 50px; /* 垂直居中文本 */
+    border-radius: 25px; /* 圆角效果 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+    transition: all 0.3s ease; /* 动画过渡效果 */
+    cursor: pointer; /* 改变鼠标指针 */
+    left: 40px; /* 左侧距离 */
+    bottom: 50%; /* 垂直居中 */
 }
 
-.grid-item h3 {
-    margin: 10px 0;
+.last-page:hover {
+    background: linear-gradient(135deg, #4e5d6b, #6e7f9d); /* 悬停时反转渐变 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 悬停时阴影增强 */
+    transform: scale(1.05); /* 悬停时轻微放大 */
+}
+.go-back {
+    position: absolute;
+    width: 150px; /* 定义宽度以避免自动宽度过小 */
+    height: 50px; /* 固定高度，保证按钮大小统一 */
+    background: linear-gradient(135deg, #6e7f9d, #4e5d6b); /* 渐变背景 */
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    line-height: 50px; /* 垂直居中文本 */
+    border-radius: 25px; /* 圆角效果 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+    transition: all 0.3s ease; /* 动画过渡效果 */
+    cursor: pointer; /* 改变鼠标指针 */
+    right: 40px; /* 右侧距离 */
+    bottom: 50%; /* 垂直居中 */
+}
+.go-back:hover {
+    background: linear-gradient(135deg, #4e5d6b, #6e7f9d); /* 悬停时反转渐变 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 悬停时阴影增强 */
+    transform: scale(1.05); /* 悬停时轻微放大 */
 }
 
-.grid-item p {
-    font-size: 12px;
-    color: #666;
-}
 
-/* Color scheme for each section */
-.market {
-    background-color: #ffeb3b;
-    border: 2px solid #e65100;
-}
-
-.practice {
-    background-color: #c8e6c9;
-    border: 2px solid #388e3c;
-}
-
-.cabane {
-    background-color: #ffcc80;
-    border: 2px solid #e64a19;
-}
-
-.bureau {
-    background-color: #bbdefb;
-    border: 2px solid #1976d2;
-}
-
-.services {
-    background-color: #e1bee7;
-    border: 2px solid #8e24aa;
-}
-
-/* Placeholder for icons (for demonstration, these would be replaced by actual images or SVGs) */
-.icon {
-    width: 50px;
-    height: 50px;
-    margin: 10px auto;
-    background-color: #ccc;
-    border-radius: 5px;
-}
-
-.market-icon { background-color: #ff8f00; }
-.practice-icon { background-color: #43a047; }
-.cabane-icon { background-color: #f4511e; }
-.bureau-icon { background-color: #1e88e5; }
-.services-icon { background-color: #8e24aa; }

@@ -7,8 +7,6 @@
   <meta charset="utf-8">
   <title>Enter if you dare</title>
   <meta name="description" content="">
-  <meta name="author" content="">
-
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,60 +28,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les Halles De La Cartoucherie</title>
+    <title>rats</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<header class="navbar">
-    <div class="logo-section">
-        <div class="logo-symbols">✴️ ◔ #</div>
-        <div class="logo-text">
-            <p>LES HALLES<br>DE LA CARTOUCHERIE</p>
+    <div class="a">
+        <div class="b" style="--i:2;background-image: url(../images/oc/addd.png);"></div>
+        <div class="c" style="--i:4;--s:1; background-image: url(../images/oc/addd.png);"></div>
+        <div class="d" style="--i:3;--s:2; background-image: url(../images/oc/addd.png);"></div>
+        <div class="e" style="--i:2;--s:3; background-image: url(../images/Oysters/colorful-tank.jpg);"></div>
+        <div class="f" style="--i:1;--s:4; background-image: url(../images/oc/addd.png);"></div>
+    </div>
+    <div class=text-box>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias libero incidunt nobis, dignissimos enim cumque. Ea tenetur assumenda cum maxime excepturi, tempora, laboriosam eos vitae, ratione esse harum quibusdam. Esse a consectetur in distinctio maxime, culpa possimus debitis rerum blanditiis vitae quas repellendus consequatur, excepturi repudiandae dolorem hic officiis laudantium?
+    </div>
+    <div class=text-box2>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias libero incidunt nobis, dignissimos enim cumque. Ea tenetur assumenda cum maxime excepturi, tempora, laboriosam eos vitae, ratione esse harum quibusdam. Esse a consectetur in distinctio maxime, culpa possimus debitis rerum blanditiis vitae quas repellendus consequatur, excepturi repudiandae dolorem hic officiis laudantium?
+    </div>
+    <div class="button">
+        <div class=go-back>
+            GO BACK
+        </div>
+        <div class=last-page>
+            REFREASH
         </div>
     </div>
-    <nav class="nav-links">
-        <a href="#">Le Lieu ↓</a>
-        <a href="#">Infos Pratiques</a>
-        <a href="#">Agenda</a>
-        <a href="#">Privatisation</a>
-    </nav>
-    <div class="right-menu">
-        <div class="language-search">
-            <a href="#">FR ↓</a>
-            <span class="search-icon">🔍</span>
-        </div>
-        <button class="program-button">PROGRAMME DU JOUR</button>
-    </div>
-</header>
 
-<div class="grid-container">
-    <div class="grid-item market">
-        <h3>LA PLACE DU MARCHÉ</h3>
-        <div class="icon market-icon"></div>
-        <p>CUISINES ET COMMERCES</p>
-    </div>
-    <div class="grid-item practice">
-        <h3>PRACTIQUER</h3>
-        <div class="icon practice-icon"></div>
-        <p>ACTIVITÉS SPORTIVES ET ARTISTIQUES</p>
-    </div>
-    <div class="grid-item cabane">
-        <h3>LA CABANE</h3>
-        <div class="icon cabane-icon"></div>
-        <p>SALLE DE SPECTACLES</p>
-    </div>
-    <div class="grid-item bureau">
-        <h3>LES BUREAUX</h3>
-        <div class="icon bureau-icon"></div>
-        <p>ESPACES DE COWORKING</p>
-    </div>
-    <div class="grid-item services">
-        <h3>LES SERVICES</h3>
-        <div class="icon services-icon"></div>
-        <p>ACCOMPAGNEMENT ET FORMATION</p>
-    </div>
-</div>
+
 
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const book = document.querySelector(".a");
+    const pages = book.querySelectorAll(".b, .c, .d, .e, .f");
+    let currentPage = 0;
+
+    // Function to flip to the next page
+    const flipPage = (pageIndex) => {
+        pages.forEach((page, index) => {
+            if (index <= pageIndex) {
+                page.style.transform = "rotateY(-180deg)";
+            } else {
+                page.style.transform = "rotateY(0deg)";
+            }
+        });
+    };
+
+    // Add click event to the book container
+    book.addEventListener("click", () => {
+        if (currentPage < pages.length - 1) {
+            currentPage++;
+        } else {
+            currentPage = 0; // Reset to the first page when all are flipped
+        }
+        flipPage(currentPage);
+    });
+});
+
+</script>
 </html>
