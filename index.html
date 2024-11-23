@@ -112,6 +112,37 @@
 #cartSidebar.show {
     display: flex;
 }
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #4B3D29;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.cart-content {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.cart-footer {
+    border-top: 1px solid white;
+    padding-top: 1rem;
+}
     </style>
 
 </head>
@@ -251,7 +282,24 @@
     </main>
 
     <script src="../js/functions.js"></script>
-</body>
 
+    <!-- Cart Sidebar -->
+<div id="cartSidebar" class="cart-sidebar" style="display: none;">
+    <div class="cart-header">
+        <h2>Shopping Cart</h2>
+        <button class="close-cart" onclick="toggleCart()" style="background: none; border: none; color: white; font-size: large; cursor: pointer;">&times;</button>
+    </div>
+    <div class="cart-content">
+        <ul id="cartItemList" style="list-style: none; padding: 0;"></ul>
+    </div>
+    <div class="cart-footer">
+        <p>Total: $<span id="cartTotal">0.00</span></p>
+        <button onclick="checkout()" style="background-color: #7C6F4F; color: white; padding: 10px; width: 100%; border: none;">Checkout</button>
+    </div>
+</div>
+</body>
+<script>
+    
+</script>
 </html>
 
