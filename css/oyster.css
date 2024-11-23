@@ -1,0 +1,191 @@
+/* 全局布局和基础样式 */
+body {
+    margin: 0;
+    padding: 20px; /* 页面边距 */
+    line-height: 1.6; /* 增加文本行间距 */
+    background-color: #f7f7f7; /* 柔和背景色 */
+}
+
+/* 文本框样式 */
+p, pre {
+    max-width: 800px;
+    margin: 40px auto; /* 距离页面边界增加 */
+    padding: 20px;
+    font-size: 1.2em;
+    text-align: justify; /* 更正式的对齐方式 */
+    background: #fdfdfd;
+    color: #333;
+    border: 2px solid #d4d4d4;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-image: url('https://www.transparenttextures.com/patterns/white-diamond.png'); /* 仿纸张纹理 */
+    background-size: cover;
+    text-indent: 2em; /* 首行缩进 */
+}
+
+/* 标题样式 */
+h1 {
+    text-align: center;
+    color: #0056a1;
+    font-size: 2em; /* 更醒目的字体大小 */
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase; /* 全大写 */
+    letter-spacing: 2px; /* 增加间距 */
+    border-bottom: 2px solid #0056a1; /* 下划线分隔 */
+    padding-bottom: 10px;
+}
+
+h2 {
+    text-align: center;
+    color: #0073e6;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed #0073e6; /* 更轻的下划线效果 */
+    padding-bottom: 5px;
+}
+
+/* 链接样式 */
+a {
+    color: #0056a1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #ff4500;
+    text-decoration: underline;
+}
+
+/* 图片框样式 */
+.ss, .ssr {
+    display: block;
+    margin: 40px auto; /* 图片距离页面边界更远 */
+    max-width: 100%;
+    border: 2px solid #d4d4d4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* 圆形复古按钮样式 */
+a[href^="#chapter"] {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #ffffff;
+    background: radial-gradient(circle at center, #04415b 30%, #38383d 90%);
+    border: 4px solid #278bdd;
+    border-radius: 50%;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+a[href^="#chapter"]:hover {
+    background: radial-gradient(circle at center, #0fe0c1 30%, #172e56 90%);
+    border-color: #0cad75;
+    color: #3d3b38;
+    transform: scale(1.1);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.4), inset 0 3px 6px rgba(255, 255, 255, 0.3);
+}
+
+a[href^="#chapter"]:active {
+    background: radial-gradient(circle at center, #3d3b38 30%, #7a7974 90%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.1);
+    transform: scale(0.95);
+}
+
+/* 按钮容器布局 */
+.button-container {
+    text-align: center;
+    margin: 40px 0; /* 距页面边缘更远 */
+    display: flex;
+    gap: 30px; /* 增加按钮间距 */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* 复古镜子风格外框样式 */
+.tank {
+    display: block;
+    margin: 40px auto; /* 居中并设置与页面的距离 */
+    width: 700px; /* 调整镜子大小为 995px */
+    border: 12px solid blue; /* 仿古金色边框 */
+    border-radius: 50%; /* 圆形边框 */
+    background: #fff; /* 白色背景模拟镜面 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), inset 0 4px 8px rgba(255, 255, 255, 0.5); /* 外部阴影和内部高光 */
+    padding: 15px; /* 内部填充 */
+    position: relative; /* 使伪元素有效 */
+    overflow: hidden; /* 防止溢出 */
+    transform: scale(1); /* 保持图片原大小 */
+    transition: transform 0.6s ease-out, box-shadow 0.6s ease-in-out, opacity 0.6s ease-in-out; /* 添加平滑过渡效果 */
+}
+
+/* 增加镜框装饰效果 */
+.tank::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: aquamarine; /* 镜框的金色 */
+    border-radius: 50%; /* 完全圆形边框 */
+    box-shadow: 0 0 15px rgba(7, 35, 134, 0.528), inset 0 0 10px rgba(255, 255, 255, 0.4); /* 内外阴影效果 */
+    transition: all 0.6s ease-in-out; /* 镜框过渡动画 */
+}
+
+/* 鼠标悬停效果 */
+.tank:hover {
+    transform: scale(1.05) rotate(5deg); /* 放大并轻微旋转 */
+    box-shadow: 0 12px 25px rgba(48, 176, 222, 0.387), inset 0 6px 12px rgba(23, 254, 246, 0.925); /* 更强的光影效果 */
+}
+
+/* 增加图片切换时的过渡效果 */
+.tank img {
+    width: 100%; /* 图片宽度适应父容器 */
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-out; /* 图片渐变过渡 */
+}
+
+/* 图片切换时的透明度变化 */
+.tank img.fade-out {
+    opacity: 0; /* 隐藏图片 */
+    transform: scale(0.95); /* 稍微缩小 */
+}
+
+/* 图片切换完成后的平滑效果 */
+.tank img.fade-in {
+    opacity: 1; /* 显示图片 */
+    transform: scale(1); /* 恢复大小 */
+}
+
+/* 鼠标按下效果 */
+.tank:active {
+    transform: scale(1) rotate(0deg); /* 按下时恢复原状 */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), inset 0 4px 8px rgba(255, 255, 255, 0.4); /* 轻微缩小与内阴影 */
+}
+/* 响应式优化 */
+@media (max-width: 768px) {
+    p, pre {
+        font-size: 1em;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .ss, .ssr {
+        width: 90%;
+    }
+}

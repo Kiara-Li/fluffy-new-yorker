@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/Kiara.css">
   <link rel="stylesheet" href="../css/animals.css">
+  <link rel="stylesheet" href="../css/oyster.css">
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -45,10 +46,8 @@
 
       &nbsp; Hello fellow oysters! I’m part of a growing community in New York Harbor, and I’m calling out to you to join me in our vital mission: restoring the natural balance of our home. Once, oysters like us covered this harbor, filtering water, creating habitats, and even protecting the city from storms. But now, it’s time for a comeback, and we need your help.
     </p>
-    <img class="ssr" src="../images/Oysters/pixoyster/worldoyster.png" alt="image of selling oysters" styple="width:200px; float:left; margin-right:19px">
 
-    <img src="../images/Oysters/colorful-tank.jpg" alt="image of selling oysters">
-    <li><a href="../entries/Homepage.html" style="color: rgb(16, 212, 124); text-decoration: none;">Return to the homepage</a></li>
+    <img src="../images/Oysters/colorful-tank.jpg" alt="image of selling oysters" class="tank" onclick="changeImage(this)">    <li><a href="../entries/Homepage.html" style="color: rgb(16, 212, 124); text-decoration: none;">Return to the homepage</a></li>
 
     <!--catalogs-->
     <a href="#chapter1">Interesting Fact1</a>
@@ -75,10 +74,22 @@
     <h2 id="chapter6">Interesting Fact6</h2>
     <p>Harum magnam nostrum consequuntur odio doloribus minus fuga nisi laudantium vitae eum dolorum repellendus, praesentium incidunt pariatur voluptates velit culpa placeat atque error tempora exercitationem quaerat animi ipsum? Ex, laboriosam!</p>   
     </P>
-    <img class="ss" src="../images/Oysters/seaside-table.JPG" alt="image of selling oysters">
 
     <a href="#">Return to Top</a> 
     
+    
 </body>
+<script>
+  // 函数用于点击图片时切换图片
+  function changeImage(imgElement) {
+      const currentSrc = imgElement.src;
+      // 检查当前图片的 src 属性，并切换图片
+      if (currentSrc.includes('colorful-tank.jpg')) {
+          imgElement.src = '../images/Oysters/seaside-table.JPG';  // 替换为新图片路径
+      } else {
+          imgElement.src = '../images/Oysters/colorful-tan.jpg';  // 恢复原始图片路径
+      }
+  }
+</script>
 </html> 
  
