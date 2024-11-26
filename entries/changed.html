@@ -5,7 +5,7 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Your page title here :)</title>
+  <title>snake</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -26,6 +26,163 @@
 
 </head>
 <body>
+  <div>
+    <title>Snake Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.js"></script>
+    <style>
+
+      #score {
+        font-size: 20px;
+        text-align: center;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Snake Game</h1>
+    <div id="score">Score = 0</div>
+    <a href="../index.html"><button class="button-32" role="button">BACK TO HOMEPAGE</button></a>
+    <script>
+      let numSegments = 10;
+      let direction = 'right';
+      const diff = 10;
+      let xCor = [];
+      let yCor = [];
+      let xFruit = 0;
+      let yFruit = 0;
+      let colorChange = 0;
+  
+      function setup() {
+        createCanvas(500, 500);
+        frameRate(15);
+        strokeWeight(10);
+        updateFruitCoordinates();
+  
+        // Initialize snake coordinates
+        for (let i = 0; i < numSegments; i++) {
+          xCor.push(0 + i * diff);
+          yCor.push(250);
+        }
+      }
+  
+      function draw() {
+        background(0);
+        stroke(colorChange % 255, (colorChange + 85) % 255, (colorChange + 170) % 255);
+        colorChange += 5;
+  
+        // Draw snake
+        for (let i = 0; i < numSegments; i++) {
+          fill(255);
+          noStroke();
+          rect(xCor[i], yCor[i], diff, diff);
+        }
+  
+        updateSnakeCoordinates();
+        checkGameStatus();
+        checkForFruit();
+      }
+  
+      function updateSnakeCoordinates() {
+        // Move body segments to the previous segment
+        for (let i = 0; i < numSegments - 1; i++) {
+          xCor[i] = xCor[i + 1];
+          yCor[i] = yCor[i + 1];
+        }
+  
+        // Update head position based on direction
+        switch (direction) {
+          case 'right':
+            xCor[numSegments - 1] = xCor[numSegments - 2] + diff;
+            yCor[numSegments - 1] = yCor[numSegments - 2];
+            break;
+          case 'up':
+            xCor[numSegments - 1] = xCor[numSegments - 2];
+            yCor[numSegments - 1] = yCor[numSegments - 2] - diff;
+            break;
+          case 'left':
+            xCor[numSegments - 1] = xCor[numSegments - 2] - diff;
+            yCor[numSegments - 1] = yCor[numSegments - 2];
+            break;
+          case 'down':
+            xCor[numSegments - 1] = xCor[numSegments - 2];
+            yCor[numSegments - 1] = yCor[numSegments - 2] + diff;
+            break;
+        }
+      }
+  
+      function checkGameStatus() {
+        // Check if snake collides with walls or itself
+        if (xCor[xCor.length - 1] > width || xCor[xCor.length - 1] < 0 ||
+            yCor[yCor.length - 1] > height || yCor[yCor.length - 1] < 0 || checkSnakeCollision()) {
+          noLoop();
+          document.getElementById("score").innerHTML = `Game Over! Your score was: ${numSegments - 10}. Press 'R' to restart.`;
+        }
+      }
+  
+      function checkSnakeCollision() {
+        const snakeHeadX = xCor[xCor.length - 1];
+        const snakeHeadY = yCor[yCor.length - 1];
+        for (let i = 0; i < xCor.length - 1; i++) {
+          if (xCor[i] === snakeHeadX && yCor[i] === snakeHeadY) {
+            return true;
+          }
+        }
+      }
+  
+      function checkForFruit() {
+        // Draw fruit as a point
+        fill(255, 0, 0);
+        noStroke();
+        ellipse(xFruit, yFruit, diff, diff);
+  
+        // If snake eats the fruit
+        if (xCor[xCor.length - 1] === xFruit && yCor[yCor.length - 1] === yFruit) {
+          xCor.unshift(xCor[0]);
+          yCor.unshift(yCor[0]);
+          numSegments++;
+          document.getElementById("score").innerHTML = `Score = ${numSegments - 10}`;
+          updateFruitCoordinates();
+        }
+      }
+  
+      function updateFruitCoordinates() {
+        xFruit = floor(random(0, (width - diff) / diff)) * diff;
+        yFruit = floor(random(0, (height - diff) / diff)) * diff;
+      }
+  
+      function keyPressed() {
+        // Change direction based on key press
+        if (keyCode === LEFT_ARROW && direction !== 'right') {
+          direction = 'left';
+        } else if (keyCode === RIGHT_ARROW && direction !== 'left') {
+          direction = 'right';
+        } else if (keyCode === UP_ARROW && direction !== 'down') {
+          direction = 'up';
+        } else if (keyCode === DOWN_ARROW && direction !== 'up') {
+          direction = 'down';
+        }
+  
+        // Restart the game
+        if (key === 'R' || key === 'r') {
+          restartGame();
+        }
+      }
+  
+      function restartGame() {
+        numSegments = 10;
+        direction = 'right';
+        xCor = [];
+        yCor = [];
+        updateFruitCoordinates();
+        for (let i = 0; i < numSegments; i++) {
+          xCor.push(0 + i * diff);
+          yCor.push(250);
+        }
+        loop();
+        document.getElementById("score").innerHTML = `Score = 0`;
+      }
+    </script>
+  </div>
   <main>
   <article>
     <section>
@@ -35,16 +192,47 @@
   </main>
   <div class="container clearfix">
     <aside class="left">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur reiciendis aut laudantium necessitatibus, dolor et nemo nostrum error nam? Vitae consectetur repudiandae assumenda tenetur maiores iusto, dolor iste eveniet non facilis. Hic quos adipisci deleniti, in quae perferendis minus nobis provident, est aspernatur necessitatibus ducimus doloribus, quia officia dolorum culpa modi quam? Voluptates cumque eligendi quasi, eaque dicta fugit molestias blanditiis eveniet non ipsa ad possimus adipisci ab quos mollitia incidunt? Odio quos quidem quasi sit doloribus exercitationem suscipit hic adipisci accusantium ratione architecto maxime laborum quo commodi laudantium, nostrum iusto ad? Eligendi ullam eius expedita itaque voluptatum quia natus id facere, corporis ex dolore delectus veniam corrupti sunt incidunt, suscipit inventore quos. Labore quos ut repudiandae obcaecati architecto, accusantium, laborum nobis deleniti dolor nesciunt aliquid laudantium facere veniam assumenda? Saepe libero dolore cumque illo repellendus nostrum. Quaerat nesciunt a sequi tenetur aut dolores accusantium nisi officia ipsum quibusdam voluptatem, hic quae omnis natus illum nobis eveniet rerum velit unde, eligendi magnam rem eum. Id iste fuga incidunt voluptates similique alias illum repudiandae. Autem suscipit beatae accusamus culpa, quisquam a ex nostrum minus perferendis exercitationem voluptatum, fugit excepturi eaque ipsum doloribus iure, dolorem tempore est non? Ad et fugiat quam.
-    </aside>
+      <img src="../images/entriesimg/snake/IMG_1796.JPG" alt="">
+      Eastern Garter Snakes (Thamnophis sirtalis) are commonly found in New York, where they thrive in diverse habitats ranging from woodlands and grasslands to wetlands and suburban areas. These non-venomous snakes are often seen basking in the sun during the day, as they are cold-blooded and rely on external heat to regulate their body temperature. In the colder months, they seek shelter in hibernation spots, such as under rocks, logs, or in burrows.
+
+      Eastern Garter Snakes are known for their distinct appearance, featuring a pattern of longitudinal stripes running along their bodies, typically in shades of green, yellow, or blue. They are carnivorous, preying on small animals such as frogs, worms, and insects, and are adept swimmers. Despite their non-venomous nature, they are often mistaken for more dangerous species.
+      
+      In New York, these snakes play an important role in the ecosystem by helping control populations of small pests. While they are not typically a threat to humans, they do rely on the health of their environment, which is impacted by human development and climate change. Conservation efforts are crucial to maintaining their habitats and ensuring their continued presence in the region.    </aside>
 
     <aside class="right">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, fugiat! Consequatur, quaerat voluptatem assumenda dolorum eius aperiam error voluptatum explicabo in sint, nisi cupiditate. Autem alias dolores reprehenderit pariatur blanditiis nisi ex in illum officiis laboriosam. Explicabo maxime assumenda, eaque, tempore odio iusto voluptatem quod deleniti dolore, quas distinctio doloremque delectus minus quae ut adipisci excepturi in eveniet aspernatur ipsam earum sequi! Ullam, modi? Officia, dolores tempora fugiat culpa corporis natus ab ut vitae dolorem ipsum sapiente sunt! Nulla, reiciendis sequi laborum mollitia officia labore quas error molestias, aspernatur voluptatem ut beatae quam id voluptatibus recusandae consectetur. Provident asperiores consequuntur quaerat voluptatem, accusamus deserunt qui. Quibusdam harum placeat voluptatum corporis esse consectetur quam voluptate autem ipsum vero quos neque officia, sapiente adipisci minus error, quisquam optio. Nobis pariatur expedita impedit cupiditate! Velit dolor quas incidunt, distinctio eaque eius totam perferendis modi. Eum, necessitatibus! Dolores repudiandae maiores recusandae pariatur nemo possimus cumque! A, nostrum delectus. Odio quas, numquam quam amet hic quasi quo voluptatibus commodi facere nisi eum molestias quia a ex placeat minus eius laudantium vitae cumque esse nesciunt ab officiis! Ab impedit dolore voluptatum facere, officiis dolor nam ad? Praesentium voluptates laboriosam asperiores quod, quidem cupiditate unde aperiam est!
+      <img src="../images/entriesimg/snake/IMG_1795.JPG" alt="">
+      The Copperhead Snake (Agkistrodon contortrix) is a venomous species native to the eastern United States, including parts of New York. Recognizable by its distinctive copper-colored head and hourglass-shaped patterns on its brown or reddish-brown body, this snake is primarily found in wooded areas, rocky hillsides, and along the edges of forests, where it can blend in with the environment to avoid predators.
+
+      Copperheads are pit vipers, meaning they have specialized heat-sensing pits between their eyes and nostrils that help them detect warm-blooded prey, such as small mammals, amphibians, and birds. Although their venom is potent, it is primarily used to subdue prey rather than for self-defense. Their bite is rarely fatal to humans, but it can cause intense pain, swelling, and tissue damage, so medical attention is essential if bitten.
+      
+      Copperheads are generally not aggressive and will often give a warning before striking, such as a loud hiss or a defensive posture. They are most active during the warmer months and prefer to remain hidden during the cooler parts of the year, sometimes hibernating in dens. Despite their venomous nature, they play an important ecological role by controlling rodent populations and maintaining a balanced ecosystem.
     </aside>
 
     <div class="main">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore eaque accusantium dicta tempora voluptatem accusamus, facere deserunt amet optio ipsum, cupiditate enim facilis commodi itaque explicabo, blanditiis harum vel doloremque! Labore odio totam quisquam rem vitae, aliquid, ipsam optio sapiente odit voluptas quia assumenda doloremque ea eius eaque dolores numquam perspiciatis deserunt voluptatum magnam aut a. Sint voluptate, adipisci alias similique odio quis enim est et dolorem doloremque hic sunt accusantium officiis aspernatur sequi. Illo velit facere nesciunt corrupti, iste ipsam magnam. Quidem quae assumenda dicta quod maiores commodi eveniet molestiae necessitatibus, quis culpa magnam nisi repudiandae est dolorem quos fuga. Odit repellendus amet vitae quis ipsa. Vitae sit repellat asperiores perferendis aliquam labore veniam consectetur reprehenderit ad. Cupiditate, neque. Architecto, atque minus suscipit veniam consectetur ipsam quis! Quam sint numquam ut ullam est repellat eaque tenetur quis sed! Itaque eligendi hic, magni quibusdam impedit recusandae iure suscipit id voluptate. Pariatur in aliquid similique quibusdam dolor nostrum vel laboriosam quasi aspernatur, doloribus alias dolore, quod aut perspiciatis! Ea animi reprehenderit necessitatibus perferendis accusamus inventore tempore eius velit! Adipisci impedit explicabo suscipit illum officiis minus in deserunt. Laboriosam quisquam est vitae doloribus aut odit nobis impedit doloremque? Expedita officiis dicta nesciunt explicabo dolorem libero ratione corrupti commodi ut aliquid illum maxime ducimus sunt eum cupiditate non, ex voluptatem nemo similique quisquam! Unde adipisci, explicabo quaerat at nihil quos, eveniet quidem iste aspernatur quam nemo autem sapiente, atque dolor dolore tempora sequi quae! Quis illum et omnis officiis aut error non quae perferendis cum? Repellat, impedit. Enim commodi obcaecati tempora eligendi at, nam sequi possimus facilis explicabo, ipsa dolorem. Placeat corporis, incidunt minima quibusdam aperiam, ex, laudantium nemo soluta nisi sunt quod? Et rem excepturi quisquam sed, eos voluptates aspernatur quidem itaque quaerat doloremque officiis, autem quos vel similique recusandae error eaque minima maxime obcaecati nisi laudantium? Excepturi, culpa fugiat consectetur nisi deleniti officia perferendis provident dolor blanditiis corporis maxime quos commodi nobis eligendi magnam neque harum ab ducimus, fuga sit ut voluptatibus. Delectus, laboriosam perspiciatis, voluptate quos magnam quaerat sapiente, dignissimos molestias quisquam sit similique ducimus magni rerum earum. Corporis totam nisi vel quo distinctio ullam culpa ipsum, ut reiciendis voluptatibus eligendi accusantium, mollitia amet quasi quisquam! Velit tempora provident reiciendis doloribus ullam rerum culpa alias accusamus quod aspernatur quia modi facere deserunt repudiandae rem, ipsam nobis iusto blanditiis sapiente delectus eligendi in accusantium! Neque accusamus provident id similique iusto fugit sint quae? Ipsam repudiandae est deleniti culpa assumenda fuga, deserunt id quas eius eveniet consequatur repellat dolore fugiat, nisi nobis qui obcaecati. Facilis repellat ea iusto, eaque doloremque placeat iure assumenda numquam officiis enim fugiat earum. Odio accusamus ratione iusto soluta at beatae eos earum atque sunt aperiam perferendis, maiores sequi quasi repellendus. Possimus, voluptate! Illum ab iste non maiores distinctio veritatis architecto obcaecati eum itaque quisquam fugit, asperiores, aspernatur minima atque et. Praesentium quo deleniti asperiores qui doloribus exercitationem distinctio, dolorem maiores delectus reprehenderit veniam provident, dolores eius fuga excepturi nisi eaque, illo laboriosam reiciendis numquam corporis dolorum maxime?
+      The Eastern Garter Snake (Thamnophis sirtalis) and the Copperhead Snake (Agkistrodon contortrix) are both native to the United States, including regions like New York, but they belong to different families, exhibit distinct behaviors, and play varied ecological roles. Understanding their differences provides insight into how each species interacts with its environment and adapts to its surroundings.
+
+Appearance and Identification
+The Eastern Garter Snake is a non-venomous species characterized by a distinctive pattern of longitudinal stripes running along its body, which can be green, yellow, or blue, depending on the individual. Its slender, long body and relatively small size, ranging from 18 to 26 inches, make it easy to mistake for other harmless snakes. The Copperhead, on the other hand, is much more striking in appearance. Its name derives from the copper-colored hue of its head, and its body is marked with hourglass-shaped patterns in shades of brown or reddish-brown. Copperheads are heavier and more robust than garter snakes, with adults typically ranging from 24 to 36 inches in length. This noticeable difference in size and pattern makes them easier to identify, though their cryptic coloration can help them blend in with their environment, especially in leaf litter and wooded areas.
+
+Venom and Defense Mechanisms
+One of the most significant differences between the two species is their venom. Copperheads are venomous pit vipers, meaning they possess specialized heat-sensing pits between their eyes and nostrils that help them locate warm-blooded prey. Their venom is primarily used to subdue their prey, such as small mammals, amphibians, and birds. While their bite can be painful and cause swelling, it is rarely fatal to humans, though immediate medical attention is advised. Despite their venomous nature, Copperheads are generally not aggressive and will often give a warning before striking, such as hissing or rattling their tails.
+
+In contrast, Eastern Garter Snakes are non-venomous and rely on other forms of defense. They may bite in self-defense if threatened but are more likely to flee or remain motionless to avoid detection. Garter snakes also release a foul-smelling musk from their cloacal glands to deter predators, which is effective in avoiding predation by larger animals. They are also capable of swimming, which allows them to escape from danger by moving into water.
+
+Habitat and Behavior
+The habitat preferences of these two snakes also differ. Eastern Garter Snakes are adaptable and can thrive in a variety of environments, from grasslands and woodlands to suburban areas and wetlands. They are commonly found in gardens, parks, and backyards where they hunt for small prey such as insects, worms, and amphibians. These snakes are diurnal, meaning they are active during the day and spend their nights hiding under rocks, logs, or in burrows.
+
+Copperheads prefer more specific habitats, such as forested areas, rocky hillsides, and the edges of woodlands. They are more secretive, often hiding in leaf litter or underbrush during the day to avoid predators. Copperheads are primarily ambush predators, waiting for prey to come close before striking. They are also more active during the warmer months but will hibernate during the winter in dens, sometimes sharing these spaces with other Copperheads or even non-venomous species like garter snakes.
+
+Ecological Role and Human Interaction
+Both species play crucial roles in maintaining the balance of their ecosystems. Eastern Garter Snakes help control populations of insects and small amphibians, contributing to pest control. They are often considered beneficial by gardeners and farmers for this reason. Similarly, Copperheads help regulate populations of small mammals, particularly rodents, which can be pests in agricultural settings. While both species are often misunderstood and feared by humans, their presence in the environment is beneficial.
+
+Copperheads, due to their venomous nature, are often perceived as dangerous, leading to unnecessary fear or even attempts at eradication. However, their shy and reclusive behavior makes bites relatively rare. In contrast, Eastern Garter Snakes, due to their harmless nature, are often more accepted and are even seen as helpful in controlling garden pests. Both snakes, though, require conservation efforts to ensure their habitats remain intact in the face of urbanization and climate change.
+
+In conclusion, while both the Eastern Garter Snake and the Copperhead Snake are fascinating creatures, their differences in appearance, behavior, and ecological roles highlight the diversity of snake species in North America. Understanding and respecting these differences can lead to better coexistence between humans and these important reptiles.
     </div>
   </div>
+  
 </body>
+
 </html>

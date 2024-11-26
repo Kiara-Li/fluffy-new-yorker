@@ -1,3 +1,12 @@
+body {
+    background: linear-gradient(#8DA399, #005f69 ), url("../images/entriesimg/waterbird/aa.jpg") no-repeat center top;
+    background-size: cover; /* 使背景图片覆盖整个页面 */
+    color: #fff; /* 全局文字颜色 */
+    background-color: black;
+    background-size:auto;
+    background-attachment: fixed;
+    font-family:'Dokdo', "sans-serif"; 
+}
 .xianzheyang{
     cursor: url("imgs/target.ico"),auto;
     display:none;
@@ -15,9 +24,8 @@
     display: block;
     clear: both;
 }
-
 header {
-    background-color: #f7a846; /* 设置橙色背景 */
+    background-color: #8DA399; /* 设置橙色背景 */
     color: #333;
     height: 70px; /* 根据需要调整高度 */
     line-height: 70px; /* 确保内容垂直居中 */
@@ -79,7 +87,7 @@ header {
     position: absolute;
     width: 100%;
     height: 4px;
-    background: #f7a846; /* 下划线的颜色与背景色一致 */
+    background: #8DA399; /* 下划线的颜色与背景色一致 */
     bottom: 0;
     left: 0;
     border-radius: 2px; /* 下划线圆角 */

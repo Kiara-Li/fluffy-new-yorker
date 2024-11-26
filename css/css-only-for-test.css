@@ -1,14 +1,24 @@
+
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dokdo&family=East+Sea+Dokdo&display=swap');
+:root {
+--headingFont: 'Dokdo', "sans-serif";
+--bodyFont: 'East Sea Dokdo', "sans-serif";
+}
 body {
-    background: #4d4a40;
+    background: #191970;
     padding: 20px 0;
     line-height: 1.8;
     min-width: 1000px;
-    font-family: Arial, sans-serif;
+    font-family: 'Dokdo', "sans-serif"; 
+    --headingFont: 'Dokdo', "sans-serif";
+    font-size: 1.4em;
     color: #333;
 }
 
 .containerZz {
-    background: #ffffff;
+    background: #E0FFFF;
     width: 90%;
     margin: 0 auto;
     padding: 30px;
@@ -54,21 +64,27 @@ body {
     border: 2px solid #ddd;
     border-radius: 6px;
     background: #f9f9f9;
-}
-
-.banner0-o .imgsos {
+  }
+  
+  .banner0-o .imgsos {
     display: flex;
     transition: transform 0.5s ease-in-out;
-}
-
-.banner0-o .imgsos img {
-    width: 100%;
-    height: auto;
+  }
+  
+  .banner0-o .imgsos a {
     display: block;
-}
-
-.banner0-o .leftsmallrain,
-.banner0-o .rightsmallrain {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .banner0-o .imgsos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the full area */
+  }
+  
+  .banner0-o .leftsmallrain,
+  .banner0-o .rightsmallrain {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -81,22 +97,22 @@ body {
     border-radius: 50%;
     line-height: 40px;
     cursor: pointer;
-}
-
-.banner0-o .leftsmallrain:hover,
-.banner0-o .rightsmallrain:hover {
+  }
+  
+  .banner0-o .leftsmallrain:hover,
+  .banner0-o .rightsmallrain:hover {
     background: #369;
-}
-
-.banner0-o .leftsmallrain {
+  }
+  
+  .banner0-o .leftsmallrain {
     left: 10px;
-}
-
-.banner0-o .rightsmallrain {
+  }
+  
+  .banner0-o .rightsmallrain {
     right: 10px;
-}
-
-.banner0-o .modal {
+  }
+  
+  .banner0-o .modal {
     width: 100%;
     background: rgba(0, 0, 0, 0.6);
     color: #ffffff;
@@ -108,29 +124,29 @@ body {
     bottom: 0;
     left: 0;
     box-sizing: border-box;
-}
-
-.banner0-o .modal .titleOwO {
+  }
+  
+  .banner0-o .modal .titleOwO {
     font-weight: bold;
     font-size: 16px;
-}
-
-.banner0-o .modal .dots {
+  }
+  
+  .banner0-o .modal .dots {
     display: flex;
     gap: 8px;
-}
-
-.banner0-o .modal .dots li {
+  }
+  
+  .banner0-o .modal .dots li {
     width: 8px;
     height: 8px;
     background: #999;
     border-radius: 50%;
     cursor: pointer;
-}
-
-.banner0-o .modal .dots li:hover {
+  }
+  
+  .banner0-o .modal .dots li:hover {
     background-color: #369;
-}
+  }
 
 .containerZz section {
     width: 90%;
@@ -182,3 +198,4 @@ body {
     color: #000;
     font-weight: bold;
 }
+

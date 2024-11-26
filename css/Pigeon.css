@@ -1,19 +1,28 @@
 /* 全局样式 */
-* {
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dokdo&family=East+Sea+Dokdo&display=swap');
+:root {
+--headingFont: 'Dokdo', "sans-serif";
+--bodyFont: 'East Sea Dokdo', "sans-serif";
+}
+* 
+{
     transition: color 0.3s, background-color 0.3s, transform 0.3s;
-    font-family: Arial, sans-serif;
+    font-family:'Dokdo', "sans-serif"; 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/lingshi.jpg") no-repeat center top;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/entriesimg/opossum/未命名作品\ 11.jpg") no-repeat center top;
     background-size: cover; /* 使背景图片覆盖整个页面 */
     color: #fff; /* 全局文字颜色 */
     background-color: black;
     background-size:auto;
     background-attachment: fixed;
+    font-family:'Dokdo', "sans-serif"; 
 }
 
 .clearfix::after {
@@ -194,11 +203,17 @@ body {
 }
 
 .adv .item .img {
-    width: 290px;
-    height: 150px;
-    background-size: cover;
+    width: 100%; /* 使图片容器宽度自适应 */
+    height: auto; /* 保证图片的高度按比例缩放 */
+    position: relative; /* 为图片定位做准备 */
 }
 
+.adv .item .img img {
+    width: 100%; /* 图片的宽度填满容器 */
+    height: auto; /* 图片的高度按比例调整 */
+    display: block; /* 去除图片底部的空隙 */
+    object-fit: contain; /* 保证图片完整显示 */
+}
 /* 链接悬停效果 */
 a {
     color: inherit;

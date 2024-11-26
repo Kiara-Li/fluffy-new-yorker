@@ -23,11 +23,16 @@
 - Clearing
 - Media Queries
 */
-
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dokdo&family=East+Sea+Dokdo&display=swap');
+:root {
+--headingFont: 'Dokdo', "sans-serif";
+--bodyFont: 'East Sea Dokdo', "sans-serif";
+}
 
 
 /* Placeholder for Google Fonts import */
-@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 .clearfix::after{
     content:"";
     display:block;
@@ -135,8 +140,8 @@ html {
 body {
   line-height: 1.5;
   font-weight: 400;
-  font-family: var(--bodyFont);
-  color: var(--textColor); 
+  font-family: 'Dokdo', "sans-serif"; 
+  --headingFont: 'Dokdo', "sans-serif";  color: var(--textColor); 
   background-color: var(--bg);
 }
 
@@ -451,12 +456,12 @@ main {
   /* this is the code responsive story */
   
   h1.story:before {
-    content: "Coffee grounds and paint,";
+    content: "In the shadows of the forest, the Copperhead lies,";
   }
   
   @media screen and (min-width: 768px) {
     h1.story:before {
-      content: "Portfolio on subway—";
+      content: "With copper eyes and patterns, a silent surprise.";
     }
     html {
         background: var(--primary-dark)
@@ -468,7 +473,7 @@ main {
 
   @media screen and (min-width: 1024px) {
     h1.story:before {
-      content: "Critics sleep in class.";
+      content: "While the Garter winds through meadows, free beneath the skies.";
     }
     html {
         background: var(--primary-light)
@@ -486,7 +491,7 @@ main {
 .left{
   float:left;
   width:300px;
-  background:lightblue;
+  background:#7FFFD4;
   margin-right: 20px;
   height: 10000px;
   margin-bottom:-9990px;
@@ -495,7 +500,7 @@ main {
 .right{
   float:right;
   width:300px;
-  background:lightblue;
+  background:#7FFFD4;
   margin-right: 20px;
   height: 10000px;
   margin-bottom:-9990px;
